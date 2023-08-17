@@ -1,12 +1,13 @@
 import { useSession, signOut } from "next-auth/react"
-import Documentfiles from "./documentfiles";
+
+import Documentfilesother from "./documentfileother";
 
 function displayHtml(htmlString) {
     return {__html: htmlString};
 }
 
 
-function Documentscnt(contents){
+function Documentscntother(contents){
 
     const session = useSession();
     
@@ -32,7 +33,7 @@ function Documentscnt(contents){
 
                                         {cnt.content_type == 3?(
                                             <>
-                                                <div dangerouslySetInnerHTML={{ __html: cnt.ssc_content }}></div>
+                                                <div dangerouslySetInnerHTML={{ __html: cnt.smrc_content }}></div>
                                                 
                                             </>
                                         ):(
@@ -62,7 +63,7 @@ function Documentscnt(contents){
                                                                 {cnt.docs_data?(
                                                                     <>
                                                                         
-                                                                        <Documentfiles docs_data={cnt.docs_data} />
+                                                                        <Documentfilesother docs_data={cnt.docs_data} />
                                                                     </>
                                                                 ):(
                                                                     <>
@@ -96,4 +97,4 @@ function Documentscnt(contents){
     )
 }
 
-export default Documentscnt;
+export default Documentscntother;

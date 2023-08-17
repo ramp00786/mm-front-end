@@ -64,6 +64,7 @@ function Header(ssData) {
                         <Link href="/" className={router.pathname == "/" ? "nav-item nav-link active" : "nav-item nav-link"}>Home</Link>
                         <Link href="/about-us" className={router.pathname == "/about-us" ? "nav-item nav-link active" : "nav-item nav-link"}>About</Link>
                         <Link href="/meetings" className={router.pathname == "/meetings" ? "nav-item nav-link active" : "nav-item nav-link"}>Meetings</Link>
+                        <Link href="/other-meetings" className={router.pathname == "/other-meetings" ? "nav-item nav-link active" : "nav-item nav-link"}>Other Meetings</Link>
                         <Link href="/services" className={router.pathname == "/services" ? "nav-item nav-link active" : "nav-item nav-link"}>Services</Link>
                         <div className="nav-item dropdown">
                             <Link href="#" className="nav-link dropdown-toggle" data-bs-toggle="dropdown">Committees</Link>

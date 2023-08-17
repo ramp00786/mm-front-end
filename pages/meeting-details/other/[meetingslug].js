@@ -7,8 +7,8 @@ import Link from "next/link";
 import { useSession, signIn, signOut } from "next-auth/react"
 import { useState, useEffect } from "react"
 import LoginWindow from '@/components/loginWindow'
-import Documents from '@/components/documents';
-import { getSession } from "next-auth/react"
+import Documentsother from '@/components/documentsother';
+
 
 
 
@@ -31,8 +31,8 @@ const API_URL_Local = process.env.API_URL?process.env.API_URL:'http://127.0.0.1:
 export async function getServerSideProps(context) {
     //---site setting Data API
     const { meetingslug } = context.query;
-    console.log(meetingslug);
-    const meetingData = await fetch(process.env.API_URL+'/api/ssc-meeting-details?slug='+meetingslug);
+
+    const meetingData = await fetch(process.env.API_URL+'/api/other-meeting-details?slug='+meetingslug);
     const meetingInfo = await meetingData.json();
 
     const site_setting = await fetch(process.env.API_URL+'/api/site-setting');
@@ -98,7 +98,7 @@ export default function MeetingDetails({ssData, meetingInfo}) {
     // ---------------------------------------------------------------------------------------------
     async function getUser(token, meetingslug){
         //console.log(token);
-        const meetingData = await fetch(API_URL_Local+'/api/ssc-meeting-documents?slug='+meetingslug, {headers:{
+        const meetingData = await fetch(API_URL_Local+'/api/other-meeting-documents?slug='+meetingslug, {headers:{
             'Content-type': 'application/json',
             'Authorization': 'Bearer '+token
         }});
@@ -165,14 +165,15 @@ export default function MeetingDetails({ssData, meetingInfo}) {
                 <div className='col-lg-6'>
                     <img className="img-fluid mb-5 meeting-single-main-image" src={API_URL_Local+'/'+meetingInfo.poster} alt="" />
                     <h1 className="mb-4">{meetingInfo.heading}</h1>
-                    <div dangerouslySetInnerHTML={displayHtml(meetingInfo.ssc_description)}></div>
+                    <div dangerouslySetInnerHTML={displayHtml(meetingInfo.smrc_description)}></div>
                 </div>
 
                 <div className='col-lg-6'>
                      {/* Agenda Start */}
                      <div className='col-12 d-flex justify-content-between'>
-                     <h2 style={{marginTop: '-7px'}} className="mb-4">Documents</h2>
-                     <Link className='flash-text fs-3 btn btn-primary' href={API_URL_Local+"/api/ssc-agenda?id="+meetingInfo.id}><i className='fa fa-file-pdf'></i> Agenda</Link>
+                        <h2 style={{marginTop: '-7px'}} className="mb-4">Documents</h2>
+
+                        <Link className='flash-text fs-3 btn btn-primary' href={API_URL_Local+"/api/other-agenda?id="+meetingInfo.id}><i className='fa fa-file-pdf'></i> Agenda</Link>
 
                         
                     </div>
@@ -180,7 +181,7 @@ export default function MeetingDetails({ssData, meetingInfo}) {
 
                     {/* Category Start */}
                     <div className="mb-5">
-                        {/* <h2 className="mb-4">Documents</h2> */}
+                        
 
                         <h2>{session?.data?.user?.ssc_user} </h2>
 
@@ -192,7 +193,7 @@ export default function MeetingDetails({ssData, meetingInfo}) {
                                         <>
                                             {meetingData?(
                                                 <>
-                                                    <Documents meetingData={meetingData} />
+                                                    <Documentsother meetingData={meetingData} />
                                                 </>
                                             ):(
                                                 <>

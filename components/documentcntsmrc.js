@@ -23,7 +23,7 @@ function Documentscntsmrc(contents){
                                     <div key={i}>
                                         {cnt.content_type == 2?(
                                             <>
-                                                <a target="_blank" href={cnt.link}>{cnt.link}</a>
+                                                <a target="_blank" href={cnt.link}>{cnt.link_text?cnt.link_text:cnt.link}</a>
                                             </>
                                         ):(
                                             <>
