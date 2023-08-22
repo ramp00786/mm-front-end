@@ -184,13 +184,13 @@ export default function MeetingDetails({ssData, meetingInfo}) {
                     <div className="mb-5">
                         
 
-                        <h2>{session?.data?.user?.ssc_user} </h2>
+                        <h2>{session?.data?.user?.smrc_user} </h2>
 
                         <div className={session.status == 'authenticated'?"py-2 text-green": "py-2 text-red"}>{loginstatus}</div>
                         
                         {session.status == 'authenticated'?(
                             <>
-                                {session?.data?.user?.image.ssc_user?(
+                                {session?.data?.user?.image.smrc_user?(
                                         <>
                                             {meetingData?(
                                                 <>

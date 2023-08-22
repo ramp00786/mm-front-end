@@ -102,13 +102,15 @@ export default function Services({dSlider, dWS, dWL, upmeData, ssData}) {
                     </div>
                     
                     <div className="col-lg-4 col-md-6">
-                        <div className="service-item bg-secondary text-center px-5">
-                            <div className="d-flex align-items-center justify-content-center bg-primary text-white rounded-circle mx-auto mb-4" style={{width: "90px", height: "90px"}}>
-                                <i className="fa fa-chart-pie fa-2x"></i>
+                        <Link href={'/publications'}>
+                            <div className="service-item bg-secondary text-center px-5">
+                                <div className="d-flex align-items-center justify-content-center bg-primary text-white rounded-circle mx-auto mb-4" style={{width: "90px", height: "90px"}}>
+                                    <i className="fa fa-chart-pie fa-2x"></i>
+                                </div>
+                                <h3 className="mb-3">Publications</h3>
+                                <p className="mb-0">IITM publications from Monsoon Mission Groups</p>
                             </div>
-                            <h3 className="mb-3">Publications</h3>
-                            <p className="mb-0">IITM publications from Monsoon Mission Groups</p>
-                        </div>
+                        </Link>
                     </div>
                     <div className="col-lg-4 col-md-6">
                         <div className="service-item bg-secondary text-center px-5">
