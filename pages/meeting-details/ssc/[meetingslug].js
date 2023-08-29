@@ -184,7 +184,7 @@ export default function MeetingDetails({ssData, meetingInfo}) {
 
                         <h2>{session?.data?.user?.ssc_user} </h2>
 
-                        <div className={session.status == 'authenticated'?"py-2 text-green": "py-2 text-red"}>{loginstatus}</div>
+                        
                         
                         {session.status == 'authenticated'?(
                             <>
@@ -223,7 +223,7 @@ export default function MeetingDetails({ssData, meetingInfo}) {
                                 <div className="row justify-content-md-center">
                                     
                                     <div className='col-lg-7'>
-                                        <LoginWindow handleSubmit={handleSubmit} userEmail={userEmail} userPassword={userPassword} handleChangeEmail={handleChangeEmail} handleChangePassword={handleChangePassword} />
+                                        <LoginWindow handleSubmit={handleSubmit} userEmail={userEmail} userPassword={userPassword} handleChangeEmail={handleChangeEmail} handleChangePassword={handleChangePassword} loginstatus={loginstatus} />
                                     </div>
                                     <div className='col-lg-5'></div>
                                 </div>

@@ -113,13 +113,15 @@ export default function Services({dSlider, dWS, dWL, upmeData, ssData}) {
                         </Link>
                     </div>
                     <div className="col-lg-4 col-md-6">
-                        <div className="service-item bg-secondary text-center px-5">
-                            <div className="d-flex align-items-center justify-content-center bg-primary text-white rounded-circle mx-auto mb-4" style={{width: "90px", height: "90px"}}>
-                                <i className="fa fa-chart-line fa-2x"></i>
+                        <Link href={'/activities'}>
+                            <div className="service-item bg-secondary text-center px-5">
+                                <div className="d-flex align-items-center justify-content-center bg-primary text-white rounded-circle mx-auto mb-4" style={{width: "90px", height: "90px"}}>
+                                    <i className="fa fa-chart-line fa-2x"></i>
+                                </div>
+                                <h3 className="mb-3">Activities</h3>
+                                <p className="mb-0">IITM activities of the Monsoon Mission Groups</p>
                             </div>
-                            <h3 className="mb-3">Activities</h3>
-                            <p className="mb-0">IITM activities of the Monsoon Mission Groups</p>
-                        </div>
+                        </Link>
                     </div>
                     <div className="col-lg-4 col-md-6">
                         <Link href={'/documents'}>
@@ -155,10 +157,21 @@ export default function Services({dSlider, dWS, dWL, upmeData, ssData}) {
                         </Link>
                     </div>
                     <div className="col-lg-4 col-md-6">
+                        <Link href={'/workshop'}>
+                            <div className="service-item bg-secondary text-center px-5">
+                                <div className="d-flex align-items-center justify-content-center bg-primary text-white rounded-circle mx-auto mb-4" style={{width: "90px", height: "90px"}}>
+                                    <i className="fa fa-cogs fa-2x"></i>
+                                </div>
+                                <h3 className="mb-3">Research / Workshop</h3>
+                                <p className="mb-0">Research / Workshop of the Monsoon Mission</p>
+                            </div>
+                        </Link>
+                    </div>
+                    <div className="col-lg-4 col-md-6">
                         <Link href={'/others'}>
                             <div className="service-item bg-secondary text-center px-5">
                                 <div className="d-flex align-items-center justify-content-center bg-primary text-white rounded-circle mx-auto mb-4" style={{width: "90px", height: "90px"}}>
-                                    <i className="fa fa-house-damage fa-2x"></i>
+                                    <i className="fa fa-bars fa-2x"></i>
                                 </div>
                                 <h3 className="mb-3">Others</h3>
                                 <p className="mb-0">Other activities, Documents, links etc.</p>

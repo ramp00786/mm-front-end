@@ -259,3 +259,13 @@ a {
 .pl-4{
   padding-left: 16px;
 }
+
+.institute-name{
+  color: #a33204;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.workshop thead, tbody, tfoot, tr, td, th{
+  border-width: thin !important;
+}

@@ -13,10 +13,9 @@ function displayHtml(htmlString) {
 }
 
 export const getStaticProps = async () =>{
-    //---MM Models Data API
-
-    const dataRes = await fetch(process.env.API_URL+'/api/all-dynamic-pages');
-    const data = await dataRes.json();
+    //---About us Data API
+    const aboutUsData = await fetch(process.env.API_URL+'/api/about-us');
+    const ausD = await aboutUsData.json();
 
     //---site setting Data API
     const site_setting = await fetch(process.env.API_URL+'/api/site-setting');
@@ -25,16 +24,16 @@ export const getStaticProps = async () =>{
     return {
         props:{
             ssData,
-            data
+            ausD
         },
     };
 };
 
-export default function Others({ssData, data}) {
+export default function About({ssData, ausD}) {
     return (
         <>
             <Head>
-                <title>Monsoon Mission | Others </title>
+                <title>Monsoon Mission | Contact-us </title>
                 <meta name="description" content="Ministry of Earth Sciences (MoES), Government of India has launched 'National Monsoon Mission' (NMM) with a vision to develop a state-of-the-art dynamical prediction system for monsoon rainfall on different time scales" />
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
                 <meta name="keywords" content="Rainfall, Weather, Climate" />
@@ -52,10 +51,10 @@ export default function Others({ssData, data}) {
             <div className="container-fluid bg-dark p-5">
                 <div className="row">
                     <div className="col-12 text-center">
-                        <h1 className="display-4 text-white">Others</h1>
+                        <h1 className="display-4 text-white">Contact Us</h1>
                         <Link href="/">Home</Link>
                         <i className="fas fa-chevron-right text-primary px-2"></i>
-                        <Link href="/about-us">Model</Link>
+                        <Link href="/about-us">contact us</Link>
                         
                     </div>
                 </div>
@@ -67,17 +66,36 @@ export default function Others({ssData, data}) {
             <div className="container p-4">
                 <div className="row g-0">
                     <div className="col-lg-12 py-12 px-12">
-                        <div className=''>
-                            
-                            {data?.map( (mmmData, i) => (
-                                <div className='document-link'  key={i}>
-                                    <Link href={'/pages/'+mmmData.slug}>
-                                        <div className='link hvr-bounce-to-right'>{mmmData.heading}</div>
-                                    </Link>
-                                </div>
-                            ) )}
-                            
-                            {/* <div dangerouslySetInnerHTML={displayHtml(mmModelData.description)}></div> */}
+                        <div className='row'>
+                            <div className='col-lg-4'>
+                                <h2>Address</h2>
+                                <p>
+                                    <span className='institute-name'>Indian Institute of Tropical Meteorology</span><br/>
+                                    Dr. Homi Bhabha Road, Pashan, <br/>
+                                    Pune 411 008, Maharashtra, India <br/>
+                                    
+                                </p>
+                            </div>
+                            <div className='col-lg-4'>
+                                <h2>Contacts</h2>
+                                <ul>
+                                    <li>Mail: <a href="mailto:monsoon_mission@tropmet.res.in">monsoon_mission@tropmet.res.in</a> </li>
+                                    <li>Phone: +91-20-2590-4424</li>
+                                    <li>Fax : +91-20-2586-5142</li>
+                                </ul>
+                            </div>
+                            <div className='col-lg-4'>
+                                <h2>Links</h2>
+                                <ul>
+                                    <li><a target='_blank' href="https://www.tropmet.res.in/">https://www.tropmet.res.in/</a> </li>
+                                    <li><a target='_blank' href="https://tropmet.res.in/How%20to%20Reach-31-Page">How to reach</a> </li>
+                                    
+                                </ul>
+                            </div>
+                            <div className='col-lg-12'>
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15131.248204906016!2d73.8054335!3d18.5373936!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2bf6f00cdfb91%3A0xdbb0b78d0aa7a9c6!2sIndian%20Institute%20of%20Tropical%20Meteorology!5e0!3m2!1sen!2sin!4v1692682992781!5m2!1sen!2sin" width="100%" height="450" style={{border: '0'}} allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            </div>
+
                         </div>
                     </div>
                     

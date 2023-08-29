@@ -87,7 +87,8 @@ function slipString(string, from, to){
 function getSlugWithMeetingInfo(meeting){
     let dateString = getDateFromString(meeting.start_date, 'day')+'-'+getMonthName(getDateFromString(meeting.start_date, 'month'))+'-'+getDateFromString(meeting.start_date, 'year');
     let heading = meeting.heading.replace(/ /g,"-");
-    let heading2 = heading.replace('?', '');
+    let heading3 = meeting.heading.replace('/',"-");
+    let heading2 = heading3.replace('?', '');
     return 'meeting-details/'+meeting.meeting_of+'/'+meeting.id+'-'+dateString+'-'+heading2;
 }
 

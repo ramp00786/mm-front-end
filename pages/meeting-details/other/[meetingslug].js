@@ -102,8 +102,16 @@ export default function MeetingDetails({ssData, meetingInfo}) {
             'Content-type': 'application/json',
             'Authorization': 'Bearer '+token
         }});
-        const jsondata =  await meetingData.json();
-        setMeetingData(jsondata);
+        
+        try {
+            const jsondata =  await meetingData.json();
+            setMeetingData(jsondata);
+        } catch (e) {
+            console.log(e)
+        }
+
+        
+        
         //console.log(jsondata)
         
     }
@@ -182,18 +190,43 @@ export default function MeetingDetails({ssData, meetingInfo}) {
                     {/* Category Start */}
                     <div className="mb-5">
                         
-
-                        <h2>{session?.data?.user?.other_meetings} </h2>
-
-                        <div className={session.status == 'authenticated'?"py-2 text-green": "py-2 text-red"}>{loginstatus}</div>
                         
+                        <h2>{session?.data?.user?.other_meetings} </h2>
                         {session.status == 'authenticated'?(
                             <>
                                 {session?.data?.user?.image.other_meetings?(
                                         <>
                                             {meetingData?(
-                                                <>
-                                                    <Documentsother meetingData={meetingData} />
+                                                <>  
+                                                    {/* {console.log(meetingData.meetingsData[0].users)} */}
+                                                    {meetingData.meetingsData[0].users==null?(
+                                                        <>
+                                                            <Documentsother meetingData={meetingData} />
+                                                        </>
+                                                    ):(
+                                                        <>
+                                                            {console.log(session?.data?.user?.image.id)}
+                                                            {/* {console.log(JSON.parse(meetingData?.meetingsData[0]?.users))}
+                                                            {console.log(meetingData?.meetingsData[0]?.users.includes(2))} */}
+                                                            {meetingData?.meetingsData[0]?.users.includes(session?.data?.user?.image.id)?(
+                                                                <>
+                                                                    <Documentsother meetingData={meetingData} />
+                                                                </>
+                                                            ):(
+                                                                <>
+                                                                    <div className="d-flex justify-content-end mb-2">
+                                                                        <button className="btn btn-outline-success mx-2">{session?.data?.user?.name} </button>
+                                                                        <button className="btn btn-sm btn-danger" onClick={signOut}>Logout</button>
+                                                                    </div> 
+
+                                                                    <div className="alert alert-danger" role="alert">
+                                                                        You don't have permission to access this page.
+                                                                    </div>
+                                                                </>
+                                                            )}
+                                                        </>
+                                                    )}
+                                                    
                                                 </>
                                             ):(
                                                 <>
@@ -224,7 +257,7 @@ export default function MeetingDetails({ssData, meetingInfo}) {
                                 <div className="row justify-content-md-center">
                                     
                                     <div className='col-lg-7'>
-                                        <LoginWindow handleSubmit={handleSubmit} userEmail={userEmail} userPassword={userPassword} handleChangeEmail={handleChangeEmail} handleChangePassword={handleChangePassword} />
+                                        <LoginWindow handleSubmit={handleSubmit} userEmail={userEmail} userPassword={userPassword} handleChangeEmail={handleChangeEmail} handleChangePassword={handleChangePassword} loginstatus={loginstatus} />
                                     </div>
                                     <div className='col-lg-5'></div>
                                 </div>

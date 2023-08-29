@@ -21,7 +21,7 @@ function Documents(meetingData){
                             {meetingData?.meetingData?(
                                 <>
                                     
-                                    {console.log(meetingData?.meetingData?.meetingsData?.map( (res)=> {return res} ))}
+                                    {/* {console.log(meetingData?.meetingData?.meetingsData?.map( (res)=> {return res} ))} */}
                                     {meetingData?.meetingData?.meetingsData?.map( (mData, i) =>(
 
                                             <div className="accordion-item" key={i}>
@@ -65,8 +65,6 @@ function Documents(meetingData){
                                                     </div>
                                                 </div>
                                             </div>
-                                        
-                                        //console.log(mData.id)
                                     ) )}
                                 </>
                             ):(

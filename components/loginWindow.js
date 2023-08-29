@@ -1,6 +1,6 @@
 
 
-export default function LoginWindow({handleSubmit, userEmail, userPassword, handleChangeEmail, handleChangePassword}){
+export default function LoginWindow({handleSubmit, userEmail, userPassword, handleChangeEmail, handleChangePassword, loginstatus}){
     function updateEmail(event){
         handleChangeEmail(event.target.value)
     }
@@ -12,6 +12,17 @@ export default function LoginWindow({handleSubmit, userEmail, userPassword, hand
             <div className="col-12 border p-4">
                 <h2 className="text-center">Login</h2>
                 <form onSubmit={handleSubmit}>
+                    {loginstatus?(
+                        <>
+                            <div class="alert alert-danger" role="alert">
+                                {loginstatus}
+                            </div>
+                        </>
+                    ):(
+                        <>
+                            
+                        </>
+                    )}
                     <div className="mb-3">
                         <label htmlFor="exampleInputEmail1" className="form-label">Email address</label>
                         <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value={userEmail} onChange={updateEmail} />

@@ -12,10 +12,16 @@ function displayHtml(htmlString) {
     return {__html: htmlString};
 }
 
+function getSlugWithActivityInfo(dd){
+    let heading = dd.heading.replace(/ /g,"-");
+    let heading2 = heading.replace('?', '');
+    return 'activity/'+dd.id+'-'+heading2;
+}
+
 export const getStaticProps = async () =>{
     //---MM Models Data API
 
-    const dataRes = await fetch(process.env.API_URL+'/api/all-dynamic-pages');
+    const dataRes = await fetch(process.env.API_URL+'/api/all-activities-headings');
     const data = await dataRes.json();
 
     //---site setting Data API
@@ -30,11 +36,11 @@ export const getStaticProps = async () =>{
     };
 };
 
-export default function Others({ssData, data}) {
+export default function Activites({ssData, data}) {
     return (
         <>
             <Head>
-                <title>Monsoon Mission | Others </title>
+                <title>Monsoon Mission | Activites </title>
                 <meta name="description" content="Ministry of Earth Sciences (MoES), Government of India has launched 'National Monsoon Mission' (NMM) with a vision to develop a state-of-the-art dynamical prediction system for monsoon rainfall on different time scales" />
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
                 <meta name="keywords" content="Rainfall, Weather, Climate" />
@@ -52,10 +58,10 @@ export default function Others({ssData, data}) {
             <div className="container-fluid bg-dark p-5">
                 <div className="row">
                     <div className="col-12 text-center">
-                        <h1 className="display-4 text-white">Others</h1>
+                        <h1 className="display-4 text-white">Activites</h1>
                         <Link href="/">Home</Link>
                         <i className="fas fa-chevron-right text-primary px-2"></i>
-                        <Link href="/about-us">Model</Link>
+                        <Link href="/about-us">Activites</Link>
                         
                     </div>
                 </div>
@@ -69,10 +75,10 @@ export default function Others({ssData, data}) {
                     <div className="col-lg-12 py-12 px-12">
                         <div className=''>
                             
-                            {data?.map( (mmmData, i) => (
+                            {data?.map( (dd, i) => (
                                 <div className='document-link'  key={i}>
-                                    <Link href={'/pages/'+mmmData.slug}>
-                                        <div className='link hvr-bounce-to-right'>{mmmData.heading}</div>
+                                    <Link href={getSlugWithActivityInfo(dd)}>
+                                        <div className='link hvr-bounce-to-right'>{dd.heading}</div>
                                     </Link>
                                 </div>
                             ) )}

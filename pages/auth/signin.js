@@ -103,7 +103,7 @@ export default function Signin({ssData}) {
             <div className="row justify-content-md-center my-4">
                 <div className='col-lg-4'></div>
                 <div className='col-lg-4'>
-                    <LoginWindow handleSubmit={handleSubmit} userEmail={userEmail} userPassword={userPassword} handleChangeEmail={handleChangeEmail} handleChangePassword={handleChangePassword} />
+                    <LoginWindow handleSubmit={handleSubmit} userEmail={userEmail} userPassword={userPassword} handleChangeEmail={handleChangeEmail} handleChangePassword={handleChangePassword} loginstatus={loginstatus} />
                 </div>
                 <div className='col-lg-4'></div>
                 

@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google'
 import Header from '@/components/header'
 import Footer from '@/components/footer'
 import Link from "next/link";
+import Workshopcnt from '@/components/workshopcnt';
 
 
 const inter = Inter({ subsets: ['latin'] });
@@ -13,10 +14,9 @@ function displayHtml(htmlString) {
 }
 
 export const getStaticProps = async () =>{
-    //---MM Models Data API
-
-    const dataRes = await fetch(process.env.API_URL+'/api/all-dynamic-pages');
-    const data = await dataRes.json();
+    //---About us Data API
+    const dataRes = await fetch(process.env.API_URL+'/api/workshop-data');
+    const dd = await dataRes.json();
 
     //---site setting Data API
     const site_setting = await fetch(process.env.API_URL+'/api/site-setting');
@@ -25,16 +25,17 @@ export const getStaticProps = async () =>{
     return {
         props:{
             ssData,
-            data
+            dd
         },
     };
 };
 
-export default function Others({ssData, data}) {
+export default function Workshop({ssData, dd}) {
+    //console.log(dd);
     return (
         <>
             <Head>
-                <title>Monsoon Mission | Others </title>
+                <title>Monsoon Mission | Research / Workshop </title>
                 <meta name="description" content="Ministry of Earth Sciences (MoES), Government of India has launched 'National Monsoon Mission' (NMM) with a vision to develop a state-of-the-art dynamical prediction system for monsoon rainfall on different time scales" />
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
                 <meta name="keywords" content="Rainfall, Weather, Climate" />
@@ -52,10 +53,10 @@ export default function Others({ssData, data}) {
             <div className="container-fluid bg-dark p-5">
                 <div className="row">
                     <div className="col-12 text-center">
-                        <h1 className="display-4 text-white">Others</h1>
+                        <h1 className="display-4 text-white">Research / Workshop</h1>
                         <Link href="/">Home</Link>
                         <i className="fas fa-chevron-right text-primary px-2"></i>
-                        <Link href="/about-us">Model</Link>
+                        <Link href="/about-us">Research / Workshop</Link>
                         
                     </div>
                 </div>
@@ -67,18 +68,7 @@ export default function Others({ssData, data}) {
             <div className="container p-4">
                 <div className="row g-0">
                     <div className="col-lg-12 py-12 px-12">
-                        <div className=''>
-                            
-                            {data?.map( (mmmData, i) => (
-                                <div className='document-link'  key={i}>
-                                    <Link href={'/pages/'+mmmData.slug}>
-                                        <div className='link hvr-bounce-to-right'>{mmmData.heading}</div>
-                                    </Link>
-                                </div>
-                            ) )}
-                            
-                            {/* <div dangerouslySetInnerHTML={displayHtml(mmModelData.description)}></div> */}
-                        </div>
+                        <Workshopcnt dd={dd} />
                     </div>
                     
                 </div>
