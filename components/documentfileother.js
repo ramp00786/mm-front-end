@@ -27,6 +27,9 @@ function Documentfilesother(docs_data){
 
     const session = useSession();
 
+    const token_id = session?.data?.user?.email;
+    sessionStorage.setItem("session_id", token_id);
+
     const [loader, setLoader] = useState(false);
     const [error, setError] = useState('');
     

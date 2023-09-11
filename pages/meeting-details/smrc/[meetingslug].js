@@ -58,8 +58,6 @@ function displayHtml(htmlString) {
 
 
 
-
-
 export default function MeetingDetails({ssData, meetingInfo}) {
 
     const [userEmail, setUserEmail] = useState()
@@ -87,6 +85,8 @@ export default function MeetingDetails({ssData, meetingInfo}) {
     function handleChangePassword(newValue){
         setuserPassword(newValue);
     }
+
+   
 
     // ---Get Slug from url
     const router = useRouter()
@@ -162,13 +162,13 @@ export default function MeetingDetails({ssData, meetingInfo}) {
                     
                 </div>
                 
-                <div className='col-lg-6'>
+                <div className='col-lg-5'>
                     <img className="img-fluid mb-5 meeting-single-main-image" src={API_URL_Local+'/'+meetingInfo.poster} alt="" />
                     <h1  className="mb-4">{meetingInfo.heading}</h1>
                     <div dangerouslySetInnerHTML={displayHtml(meetingInfo.smrc_description)}></div>
                 </div>
 
-                <div className='col-lg-6'>
+                <div className='col-lg-7'>
                      {/* Agenda Start */}
                      <div className='col-12 d-flex justify-content-between'>
 

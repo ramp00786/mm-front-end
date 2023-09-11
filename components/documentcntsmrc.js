@@ -6,6 +6,8 @@ function displayHtml(htmlString) {
 }
 
 
+
+
 function Documentscntsmrc(contents){
 
     const session = useSession();
@@ -20,7 +22,7 @@ function Documentscntsmrc(contents){
                             <>  
                                 {contents?.contents?.map( (cnt, i) =>(
 
-                                    <div key={i}>
+                                    <div key={i} style={{overflow: 'auto', paddingLeft: '10px'}}>
                                         {cnt.content_type == 2?(
                                             <>
                                                 <a target="_blank" href={cnt.link}>{cnt.link_text?cnt.link_text:cnt.link}</a>
@@ -31,7 +33,7 @@ function Documentscntsmrc(contents){
                                         )}
 
                                         {cnt.content_type == 3?(
-                                            <>
+                                            <>  
                                                 <div dangerouslySetInnerHTML={{ __html: cnt.smrc_content }}></div>
                                                 
                                             </>

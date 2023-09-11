@@ -178,6 +178,7 @@ export default function Home({dSlider, dWS, dWL, upmeData, ssData, HPM}) {
         <div className="container-fluid bg-secondary p-0">
             <div className="row g-0">
                 <div className="col-lg-6 py-6 px-5">
+
                     <h1 className="display-5 mb-4" dangerouslySetInnerHTML={displayHtml(dWS.heading)}>
                     </h1>
                     <h4 className="text-primary mb-4">{dWS.tagline}</h4>
@@ -212,7 +213,7 @@ export default function Home({dSlider, dWS, dWL, upmeData, ssData, HPM}) {
                 <div className="col-lg-6 py-6 px-5">
                     <h1 className="display-5 mb-4">{upmeData.heading}</h1>
                     <p className="mb-4">{upmeData.description}</p>
-                    <form>
+                    {/* <form>
                         <div className="row gx-3">
                             <small>Get notification on email</small>
                             <div className="col-6">
@@ -232,7 +233,7 @@ export default function Home({dSlider, dWS, dWL, upmeData, ssData, HPM}) {
                                 <button className="btn btn-primary w-100 h-100" type="submit">Subscribe Now</button>
                             </div>
                         </div>
-                    </form>
+                    </form> */}
                 </div>
                 <div className="col-lg-6" style={{minHeight: "400px"}}>
                     <div className="position-relative h-100">

@@ -11,6 +11,8 @@ export default function Document() {
       <script src="https://tropmet.res.in/monsoon/monsoon3/js/lib/waypoints/waypoints.min.js"></script>
       <script src="https://tropmet.res.in/monsoon/monsoon3/js/lib/owlcarousel/owl.carousel.min.js"></script>
       <script src="https://tropmet.res.in/monsoon/monsoon3/js/main.js"></script>
+      <script src="/custom.js"></script>
+      
       <Head />
       <body>
         <Main />

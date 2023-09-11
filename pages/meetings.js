@@ -132,7 +132,7 @@ export default function Meetings({dSlider, dWS, dWL, upmeData, ssData, AllM}) {
                 <div className="col-lg-6 py-6 px-5">
                     <h1 className="display-5 mb-4">Upcoming SMRC and SSC Meeting soon</h1>
                     <p className="mb-4">We will display Upcoming SMRC and SSC Meeting date and time here, kindly check website frequently.</p>
-                    <form>
+                    {/* <form>
                         <div className="row gx-3">
                             <small>Get notification on email</small>
                             <div className="col-6">
@@ -152,7 +152,7 @@ export default function Meetings({dSlider, dWS, dWL, upmeData, ssData, AllM}) {
                                 <button className="btn btn-primary w-100 h-100" type="submit">Subscribe Now</button>
                             </div>
                         </div>
-                    </form>
+                    </form> */}
                 </div>
                 <div className="col-lg-6" style={{minHeight: "400px"}}>
                     <div className="position-relative h-100">
