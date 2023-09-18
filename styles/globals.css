@@ -297,3 +297,10 @@ a {
   box-shadow: 0 0 0 0 #f3f4f5 !important;
 }
 
+
+
+@media (min-width: 1200px){
+  h4, .h4 {
+      font-size: 1.1rem !important;
+  }
+}

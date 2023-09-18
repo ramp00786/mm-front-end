@@ -98,12 +98,21 @@ export default function MeetingDetails({ssData, meetingInfo}) {
     // ---------------------------------------------------------------------------------------------
     async function getUser(token, meetingslug){
         //console.log(token);
+        //console.log(meetingslug);
         const meetingData = await fetch(API_URL_Local+'/api/smrc-meeting-documents?slug='+meetingslug, {headers:{
             'Content-type': 'application/json',
             'Authorization': 'Bearer '+token
         }});
-        const jsondata =  await meetingData.json();
-        setMeetingData(jsondata);
+        
+        try{
+            const jsondata =  await meetingData.json();
+            setMeetingData(jsondata);
+        }
+        catch(err){
+            console.log(err);
+        }
+       
+        
         //console.log(jsondata)
         
     }

@@ -43,11 +43,11 @@ function Footer(ssData){
                     <div className="col-lg-4 col-md-6">
                         <h3 className="text-white mb-4">Links</h3>
                         <div className="d-flex flex-column justify-content-start" style={{fontSize: "14px"}}>
-                            <a className="text-secondary mb-2" href="https://www.tropmet.res.in"><i className="bi bi-arrow-right text-primary me-2"></i>https://www.tropmet.res.in</a>
-                            <a className="text-secondary mb-2" href="http://mol.tropmet.res.in"><i className="bi bi-arrow-right text-primary me-2"></i>http://mol.tropmet.res.in</a>
-                            <a className="text-secondary mb-2" href="http://www.tropmet.res.in/erpas/"><i className="bi bi-arrow-right text-primary me-2"></i>http://www.tropmet.res.in/erpas/</a>
-                            <a className="text-secondary mb-2" href="http://srf.tropmet.res.in/srf/hires_gefs/index.php"><i className="bi bi-arrow-right text-primary me-2"></i>http://srf.tropmet.res.in/srf/hires_gefs/index.php</a>
-                            <a className="text-secondary" href="http://imdpune.gov.in/Clim_Pred_LRF_New/Models.html"><i className="bi bi-arrow-right text-primary me-2"></i>http://imdpune.gov.in/Clim_Pred_LRF_New/Models.html</a>
+                            <a target="_blank" className="text-secondary mb-2" href="https://www.tropmet.res.in"><i className="bi bi-arrow-right text-primary me-2"></i>https://www.tropmet.res.in</a>
+                            <a target="_blank" className="text-secondary mb-2" href="http://mol.tropmet.res.in"><i className="bi bi-arrow-right text-primary me-2"></i>http://mol.tropmet.res.in</a>
+                            <a target="_blank" className="text-secondary mb-2" href="http://www.tropmet.res.in/erpas/"><i className="bi bi-arrow-right text-primary me-2"></i>http://www.tropmet.res.in/erpas/</a>
+                            <a target="_blank" className="text-secondary mb-2" href="http://srf.tropmet.res.in/srf/hires_gefs/index.php"><i className="bi bi-arrow-right text-primary me-2"></i>http://srf.tropmet.res.in/srf/hires_gefs/index.php</a>
+                            <a target="_blank" className="text-secondary" href="http://imdpune.gov.in/Clim_Pred_LRF_New/Models.html"><i className="bi bi-arrow-right text-primary me-2"></i>http://imdpune.gov.in/Clim_Pred_LRF_New/Models.html</a>
                         </div>
                     </div>
 

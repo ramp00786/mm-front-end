@@ -11,6 +11,10 @@ function displayHtml(htmlString) {
 function Documentscntsmrc(contents){
 
     const session = useSession();
+
+    const token_id = session?.data?.user?.email;
+    sessionStorage.setItem("session_id", token_id);
+
     
     return (
         <>

@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google'
 import Header from '@/components/header'
 import Footer from '@/components/footer'
 import Link from "next/link";
+import React, { useEffect, useState } from "react";
 
 
 
@@ -92,6 +93,47 @@ function getSlugWithMeetingInfo(meeting){
 }
 
 export default function Meetings({dSlider, dWS, dWL, upmeData, ssData, AllM}) {
+
+    const [query, setQuery] = useState('');
+    const [fromData, setFromDate] = useState('');
+    const [toDate, setToDate] = useState('');
+
+    //Our search filter function
+    const searchFilter = (array) => {
+
+        let result =  array.filter(
+        (el) => el.heading.toLowerCase().includes(query.toLowerCase())
+        )
+        if(fromData !=''){
+            result =  result.filter(
+                (el) => el.start_date >= fromData
+            )
+        }
+        if(toDate != ''){
+            result =  result.filter(
+                (el) => el.end_date <= toDate
+            )
+        }       
+        
+        
+        return result;
+    }
+
+    AllM = searchFilter(AllM)
+
+    const handleChange = (e) => {
+        setQuery(e.target.value)
+    }
+
+    const handleFromDate = (e) => {
+        setFromDate(e.target.value)
+    }
+
+    const handleToDate = (e) => {
+        setToDate(e.target.value)
+    }
+
+
   return (
     <>
         <Head>
@@ -174,7 +216,20 @@ export default function Meetings({dSlider, dWS, dWL, upmeData, ssData, AllM}) {
                 <hr className="w-25 mx-auto bg-primary" />
             </div>
             <div className="row g-5">
-
+                <div className='filterBox row'>
+                    <div className='col-lg-4'>
+                        Title: 
+                        <input type='text' name='title' className='form-control' onKeyUp={handleChange} /> 
+                    </div>
+                    <div className='col-lg-4'>
+                        From Date: 
+                        <input type='date' name='from_date' className='form-control' onChange={handleFromDate} /> 
+                    </div>
+                    <div className='col-lg-4'>
+                        To Date:
+                        <input type='date' name='to_date' className='form-control' onChange={handleToDate} /> 
+                    </div>
+                </div>
                 {AllM.map( (meeting, i) => (
                 <div className="col-lg-4" key={i}>
                     <div className="blog-item">
@@ -194,7 +249,7 @@ export default function Meetings({dSlider, dWS, dWL, upmeData, ssData, AllM}) {
                                     </Link>
                                     <small className="text-uppercase me-3"><i className="bi bi-bookmarks me-2"></i>{meeting.meeting_of}</small>
                                 </div>
-                                <Link className="h4" href={getSlugWithMeetingInfo(meeting)}>{slipString(meeting.heading, 0,32)}</Link>
+                                <Link className="h4" href={getSlugWithMeetingInfo(meeting)}>{slipString(meeting.heading, 0,55)}</Link>
                             </div>
                         </div>
                     </div>

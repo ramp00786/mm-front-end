@@ -9,6 +9,9 @@ function displayHtml(htmlString) {
 function Documentscnt(contents){
 
     const session = useSession();
+
+    const token_id = session?.data?.user?.email;
+    sessionStorage.setItem("session_id", token_id);
     
     return (
         <>

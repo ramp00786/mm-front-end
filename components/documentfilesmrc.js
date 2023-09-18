@@ -15,6 +15,7 @@ function slipString(string, from, to){
     // else{
     //     return string.substring(from,to);
     // }
+    // 
 }
 
 

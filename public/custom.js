@@ -12,6 +12,7 @@ function myFunction(name)
 function downloadFileAuto (file_name){
 
 	var token = sessionStorage.getItem('session_id');
+	console.log(token);
 	
 	$.ajax({
 		type: "GET",
