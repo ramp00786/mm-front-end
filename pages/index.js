@@ -3,6 +3,8 @@ import { Inter } from 'next/font/google'
 import Header from '@/components/header'
 import Footer from '@/components/footer'
 import Link from "next/link";
+import Image from 'next/image'
+import GlobalConifg from './app.config.js'
 
 
 
@@ -11,33 +13,38 @@ import Link from "next/link";
 const inter = Inter({ subsets: ['latin'] })
 
 
-const API_URL_Local = process.env.API_URL?process.env.API_URL:'http://127.0.0.1:8000';
 
 export const getStaticProps = async () =>{
     //---Slider Data API
-    const sliderData = await fetch(process.env.API_URL+'/api/slider');
+    const sliderData = await fetch(GlobalConifg.API_URL_Local+'/api/slider');
     const dSlider = await sliderData.json();
+    //const dSlider = [];
 
     //---Welcome Section Data API
     const WSData = await fetch(process.env.API_URL+'/api/welcome-section');
     const dWS = await WSData.json();
+    //const dWS = [];
 
     //---Welcome List Data API
     const WLData = await fetch(process.env.API_URL+'/api/welcome-list');
     const dWL = await WLData.json();
+    //const dWL = [];
 
     //---Welcome List Data API
     const upmeRes = await fetch(process.env.API_URL+'/api/upcoming-meeting');
     const upmeData = await upmeRes.json();
+    //const upmeData = [];
 
     //---site setting Data API
     const site_setting = await fetch(process.env.API_URL+'/api/site-setting');
     const ssData = await site_setting.json();
+    //const ssData = [];
 
 
     //---Home page meetings
-    const HPmeetings = await fetch(process.env.API_URL+'/api/home-page-meetings');
-    const HPM = await HPmeetings.json();
+    //const HPmeetings = await fetch(process.env.API_URL+'/api/home-page-meetings');
+    //const HPM = await HPmeetings.json();
+    const HPM = [];
 
     return {
         props:{
@@ -97,6 +104,7 @@ function getSlugWithMeetingInfo(meeting){
 }
 
 export default function Home({dSlider, dWS, dWL, upmeData, ssData, HPM}) {
+    const API_URL_Local = GlobalConifg.API_URL_Local;
   return (
     <>
         <Head>
@@ -106,7 +114,7 @@ export default function Home({dSlider, dWS, dWL, upmeData, ssData, HPM}) {
             <meta name="keywords" content="Rainfall, Weather, Climate" />
             <meta name="author" content="Indian Institute of Tropical Meteorology" />
             <link rel="icon" href="img/mm-logo.png" />
-            <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@500;600;700&family=Open+Sans:wght@400;600&display=swap"  />
+            {/* <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@500;600;700&family=Open+Sans:wght@400;600&display=swap"  /> */}
         </Head>
 
 
@@ -237,7 +245,7 @@ export default function Home({dSlider, dWS, dWL, upmeData, ssData, HPM}) {
                 </div>
                 <div className="col-lg-6" style={{minHeight: "400px"}}>
                     <div className="position-relative h-100">
-                        <img className="position-absolute w-100 h-100" src={API_URL_Local+"/"+upmeData.banner} style={{objectFit: "cover"}} />
+                        <img className="position-absolute w-100 h-100" alt='' src={API_URL_Local+"/"+upmeData.banner} style={{objectFit: "cover"}} />
                     </div>
                 </div>
             </div>

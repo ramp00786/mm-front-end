@@ -1,7 +1,10 @@
 import NextAuth from "next-auth/next";
 import CredentialsProvider from "next-auth/providers/credentials";
 
-const API_URL_Local = process.env.API_URL?process.env.API_URL:'http://127.0.0.1:8000';
+import GlobalConifg from '../../../pages/app.config';
+
+
+const API_URL_Local = GlobalConifg.API_URL_Local;
 
 export const AuthOptions = {
     providers: [

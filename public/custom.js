@@ -16,7 +16,7 @@ function downloadFileAuto (file_name){
 	
 	$.ajax({
 		type: "GET",
-		url: "http://127.0.0.1:8000/api/auto-file-download/?file_name="+file_name,
+		url: "https://monsoon-mission.tropmet.res.in/dbtl1dt/api/auto-file-download/?file_name="+file_name,
 		cache: false,
 		headers: {
 			Accept: 'application/json',

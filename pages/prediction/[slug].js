@@ -3,8 +3,12 @@ import Head from 'next/head'
 import Header from '@/components/header'
 import Footer from '@/components/footer'
 import Link from "next/link";
+import Image from 'next/image'
 
-const API_URL_Local = process.env.API_URL?process.env.API_URL:'http://127.0.0.1:8000';
+import GlobalConifg from './app.config.js'
+
+
+const API_URL_Local = GlobalConifg.API_URL_Local;
 
 export async function getServerSideProps(context) {
     //---site setting Data API
@@ -46,7 +50,7 @@ export default function DynamicPages({ssData, modelData}){
                 <meta name="keywords" content="Rainfall, Weather, Climate" />
                 <meta name="author" content="Indian Institute of Tropical Meteorology" />
                 <link rel="icon" href="/img/mm-logo.png" />
-                <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@500;600;700&family=Open+Sans:wght@400;600&display=swap"  />
+                {/* <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@500;600;700&family=Open+Sans:wght@400;600&display=swap"  /> */}
             </Head>
             
             {/* Header */}
@@ -138,7 +142,7 @@ export default function DynamicPages({ssData, modelData}){
                                     </div>
                                 </td>
                                 <td rowspan="2">
-                                    <img src="http://127.0.0.1:8000/uploads/others/06.jpg" alt="" width="100%" />
+                                    <img src="https://monsoon-mission.tropmet.res.in/dbtl1dt/uploads/others/06.jpg" alt="" width="100%" />
                                 </td>
                                 <td className='pl-4'>
                                     <div className='box pl-4'>

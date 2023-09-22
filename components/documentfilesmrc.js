@@ -3,9 +3,10 @@ import Link from "next/link";
 import { useState, useEffect } from "react"
 import axios from 'axios';
 
+import GlobalConifg from '../pages/app.config'
 
 
-const API_URL_Local = process.env.API_URL?process.env.API_URL:'http://127.0.0.1:8000';
+const API_URL_Local = GlobalConifg.API_URL_Local;
 
 function slipString(string, from, to){
     return string;

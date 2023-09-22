@@ -16,7 +16,10 @@ import MaterialTable from 'material-table';
 
 
 const inter = Inter({ subsets: ['latin'] });
-const API_URL_Local = process.env.API_URL?process.env.API_URL:'http://127.0.0.1:8000';
+import GlobalConifg from './app.config.js'
+
+
+const API_URL_Local = GlobalConifg.API_URL_Local;
 
 function displayHtml(htmlString) {
     return {__html: htmlString};
@@ -80,8 +83,8 @@ export default function About({ssData, serverData, dataDesc}) {
                 <meta name="keywords" content="Rainfall, Weather, Climate" />
                 <meta name="author" content="Indian Institute of Tropical Meteorology" />
                 <link rel="icon" href="img/mm-logo.png" />
-                <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@500;600;700&family=Open+Sans:wght@400;600&display=swap"  />
-                <link  rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+                {/* <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@500;600;700&family=Open+Sans:wght@400;600&display=swap"  /> */}
+                {/* <link  rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" /> */}
                 
             </Head>
             

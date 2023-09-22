@@ -3,12 +3,15 @@ import Link from "next/link";
 import logo from "/img/mm-logo.png";
 import Counter from "./counter";
 import { useSession, signOut } from "next-auth/react"
+import Image from 'next/image'
+
+import GlobalConifg from '../pages/app.config';
 
 
 
 function Header(ssData) {
     const router = useRouter();
-    const API_URL_Local = process.env.API_URL?process.env.API_URL:'http://127.0.0.1:8000';
+    const API_URL_Local = GlobalConifg.API_URL_Local;
 
     const session = useSession();
 

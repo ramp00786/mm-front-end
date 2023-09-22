@@ -9,6 +9,7 @@ import { useState, useEffect } from "react"
 import LoginWindow from '@/components/loginWindow'
 import Documentssmrc from '@/components/documentssmrc';
 import { getSession } from "next-auth/react"
+import Image from 'next/image'
 
 
 
@@ -26,7 +27,10 @@ import { getSession } from "next-auth/react"
 
 
 
-const API_URL_Local = process.env.API_URL?process.env.API_URL:'http://127.0.0.1:8000';
+import GlobalConifg from '../../../pages/app.config'
+
+
+const API_URL_Local = GlobalConifg.API_URL_Local;
 
 export async function getServerSideProps(context) {
     //---site setting Data API
@@ -97,9 +101,10 @@ export default function MeetingDetails({ssData, meetingInfo}) {
 
     // ---------------------------------------------------------------------------------------------
     async function getUser(token, meetingslug){
-        //console.log(token);
-        //console.log(meetingslug);
+        console.log(token);
+        console.log(meetingslug);
         const meetingData = await fetch(API_URL_Local+'/api/smrc-meeting-documents?slug='+meetingslug, {headers:{
+            "Access-Control-Allow-Origin": "*",
             'Content-type': 'application/json',
             'Authorization': 'Bearer '+token
         }});
@@ -140,7 +145,7 @@ export default function MeetingDetails({ssData, meetingInfo}) {
             <meta name="keywords" content="Rainfall, Weather, Climate" />
             <meta name="author" content="Indian Institute of Tropical Meteorology" />
             <link rel="icon" href="../../img/mm-logo.png" />
-            <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@500;600;700&family=Open+Sans:wght@400;600&display=swap"  />
+            {/* <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@500;600;700&family=Open+Sans:wght@400;600&display=swap"  /> */}
         </Head>
 
 
@@ -221,7 +226,7 @@ export default function MeetingDetails({ssData, meetingInfo}) {
                                             </div> 
 
                                             <div className="alert alert-danger" role="alert">
-                                                You don't have permission to access this page.
+                                                You don&apos;t have permission to access this page.
                                             </div>
                                         </>
                                 )}

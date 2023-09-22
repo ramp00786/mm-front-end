@@ -4,12 +4,16 @@ import Header from '@/components/header'
 import Footer from '@/components/footer'
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
+import Image from 'next/image'
 
 
 
 const inter = Inter({ subsets: ['latin'] })
 
-const API_URL_Local = process.env.API_URL?process.env.API_URL:'http://127.0.0.1:8000';
+import GlobalConifg from './app.config.js'
+
+
+const API_URL_Local = GlobalConifg.API_URL_Local;
 
 export const getStaticProps = async () =>{
     //---Slider Data API
@@ -143,7 +147,7 @@ export default function Meetings({dSlider, dWS, dWL, upmeData, ssData, AllM}) {
             <meta name="keywords" content="Rainfall, Weather, Climate" />
             <meta name="author" content="Indian Institute of Tropical Meteorology" />
             <link rel="icon" href="img/mm-logo.png" />
-            <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@500;600;700&family=Open+Sans:wght@400;600&display=swap"  />
+            {/* <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@500;600;700&family=Open+Sans:wght@400;600&display=swap"  /> */}
         </Head>
 
 
@@ -198,7 +202,7 @@ export default function Meetings({dSlider, dWS, dWL, upmeData, ssData, AllM}) {
                 </div>
                 <div className="col-lg-6" style={{minHeight: "400px"}}>
                     <div className="position-relative h-100">
-                        <img className="position-absolute w-100 h-100" src="img/quote.jpg" style={{objectFit: "cover"}} />
+                        <img className="position-absolute w-100 h-100" alt='' src="img/quote.jpg" style={{objectFit: "cover"}} />
                     </div>
                 </div>
             </div>

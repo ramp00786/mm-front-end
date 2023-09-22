@@ -11,7 +11,10 @@ import axios from 'axios';
 
 
 
-const API_URL_Local = process.env.API_URL?process.env.API_URL:'http://127.0.0.1:8000';
+import GlobalConifg from './app.config.js'
+
+
+const API_URL_Local = GlobalConifg.API_URL_Local;
 
 export async function getServerSideProps(context) {
     //---site setting Data API
@@ -114,7 +117,7 @@ export default function File({ssData, dd}){
                 <meta name="keywords" content="Rainfall, Weather, Climate" />
                 <meta name="author" content="Indian Institute of Tropical Meteorology" />
                 <link rel="icon" href="../../img/mm-logo.png" />
-                <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@500;600;700&family=Open+Sans:wght@400;600&display=swap"  />
+                {/* <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@500;600;700&family=Open+Sans:wght@400;600&display=swap"  /> */}
             </Head>
 
 
