@@ -9,10 +9,8 @@
     "export": "next build && next export",
     "lint": "next lint"
   },
-  "dependencies": {
-    
-    "@mui/material": "^5.14.10",
-    "@mui/styles": "^5.14.10",
+  "dependencies": {    
+    "@mui/material": "^5.14.10",    
     "axios": "^1.4.0",
     "eslint": "8.37.0",
     "eslint-config-next": "13.2.4",
