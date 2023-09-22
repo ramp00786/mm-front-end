@@ -4,7 +4,7 @@ import Header from '@/components/header'
 import Footer from '@/components/footer'
 import Link from "next/link";
 import { useState} from "react"
-import MaterialTable from 'material-table';
+//import MaterialTable from 'material-table';
 
 
 /*
@@ -116,11 +116,45 @@ export default function About({ssData, serverData, dataDesc}) {
                             <h2 style={{color: '#ff3100'}}>{dataDesc.dataDesc.heading}</h2>
                             <p style={{color:'#760f2b'}}>{dataDesc.dataDesc.description}</p>
                         </div>
-                        <MaterialTable
+                        {/* <MaterialTable
                             title=""
                             columns={columns}
                             data={serverData.tableData}
-                        />
+                        /> */}
+
+                        {console.log(serverData.tableData)}
+                        
+                        <table className='table'>
+                            <thead>
+                                <tr>
+                                    <th>Data Variable</th>
+                                    <th>Period of the data</th>
+                                    <th>Frequency of Data</th>
+                                    <th>Expt. Name/Model Used</th>
+                                    <th>Reference</th>
+                                    <th>Remarks</th>
+                                    <th>Is new</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {serverData.tableData.map( (dt, i) => (
+                                    <tr key={i}>
+                                        <td> <div dangerouslySetInnerHTML={{ __html: dt.data_variable }} /> </td>
+                                        <td> <div dangerouslySetInnerHTML={{ __html: dt.period_of_the_data }} /> </td>
+                                        <td> <div dangerouslySetInnerHTML={{ __html: dt.frequency_of_data }} /> </td>
+                                        <td> <div dangerouslySetInnerHTML={{ __html: dt.expt_name_model_used }} /> </td>
+                                        <td> <div dangerouslySetInnerHTML={{ __html: dt.reference }} /> </td>
+                                        <td> <div dangerouslySetInnerHTML={{ __html: dt.remarks }} /> </td>
+                                        <td> {dt.is_new == 1?(
+                                            <img src="https://www.pngmart.com/files/23/New-PNG-File.png" style={{width: '50px'}} alt="" />
+                                        ):(
+                                            <>
+                                            </>
+                                        )} </td>
+                                    </tr>
+                                ) ) }
+                            </tbody>
+                        </table>
                         
                     </div>
                     
