@@ -13,7 +13,7 @@ import Router from 'next/router';
 
 
 const inter = Inter({ subsets: ['latin'] });
-import GlobalConifg from './app.config.js'
+import GlobalConifg from '../../app.config'
 
 
 const API_URL_Local = GlobalConifg.API_URL_Local;

@@ -11,7 +11,7 @@ import axios from 'axios';
 
 
 
-import GlobalConifg from './app.config.js'
+import GlobalConifg from '../../../app.config'
 
 
 const API_URL_Local = GlobalConifg.API_URL_Local;

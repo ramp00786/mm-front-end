@@ -10,7 +10,7 @@ import LoginWindow from '@/components/loginWindow'
 import Documentsactivity from '@/components/documentsactivity';
 import { getSession } from "next-auth/react"
 
-import GlobalConifg from './app.config.js'
+import GlobalConifg from '../../app.config'
 
 
 const API_URL_Local = GlobalConifg.API_URL_Local;

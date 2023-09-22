@@ -5,7 +5,7 @@ import Counter from "./counter";
 import { useSession, signOut } from "next-auth/react"
 import Image from 'next/image'
 
-import GlobalConifg from '../pages/app.config';
+import GlobalConifg from '../app.config';
 
 
 

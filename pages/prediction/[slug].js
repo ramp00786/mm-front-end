@@ -5,7 +5,7 @@ import Footer from '@/components/footer'
 import Link from "next/link";
 import Image from 'next/image'
 
-import GlobalConifg from './app.config.js'
+import GlobalConifg from '../../app.config'
 
 
 const API_URL_Local = GlobalConifg.API_URL_Local;

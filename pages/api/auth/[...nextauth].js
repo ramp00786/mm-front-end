@@ -1,7 +1,7 @@
 import NextAuth from "next-auth/next";
 import CredentialsProvider from "next-auth/providers/credentials";
 
-import GlobalConifg from '../../../pages/app.config';
+import GlobalConifg from '../../../app.config';
 
 
 const API_URL_Local = GlobalConifg.API_URL_Local;
