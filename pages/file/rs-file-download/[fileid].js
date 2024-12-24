@@ -8,6 +8,8 @@ import { useSession, signIn, signOut } from "next-auth/react"
 import { useState, useEffect } from "react"
 import LoginWindow from '@/components/loginWindow'
 import axios from 'axios';
+import { fetchData } from '../../utils/api';
+
 
 
 
@@ -20,11 +22,11 @@ export async function getServerSideProps(context) {
     //---site setting Data API
     const { fileid } = context.query;
 
-    const dataRes = await fetch(process.env.API_URL+'/api/file-details?id='+fileid);
-    const dd = await dataRes.json();
+    const dd = await fetchData('/api/file-details?id='+fileid);
+    
 
-    const site_setting = await fetch(process.env.API_URL+'/api/site-setting');
-    const ssData = await site_setting.json();
+    const ssData = await fetchData('/api/site-setting');
+    
     // ---------------------------------------------------------------------------------------------
     
     

@@ -5,6 +5,7 @@ import Footer from '@/components/footer'
 import Link from "next/link";
 import Image from 'next/image'
 import GlobalConifg from '../app.config'
+import { fetchData } from './utils/api';
 
 
 
@@ -14,40 +15,17 @@ const inter = Inter({ subsets: ['latin'] })
 
 
 
-export const getStaticProps = async () =>{
-    //---Slider Data API
-    const sliderData = await fetch(GlobalConifg.API_URL_Local+'/api/slider');
-    const dSlider = await sliderData.json();
-    //const dSlider = [];
-
-    //---Welcome Section Data API
-    const WSData = await fetch(process.env.API_URL+'/api/welcome-section');
-    const dWS = await WSData.json();
-    //const dWS = [];
-
-    //---Welcome List Data API
-    const WLData = await fetch(process.env.API_URL+'/api/welcome-list');
-    const dWL = await WLData.json();
-    //const dWL = [];
-
-    //---Welcome List Data API
-    const upmeRes = await fetch(process.env.API_URL+'/api/upcoming-meeting');
-    const upmeData = await upmeRes.json();
-    //const upmeData = [];
-
-    //---site setting Data API
-    const site_setting = await fetch(process.env.API_URL+'/api/site-setting');
-    const ssData = await site_setting.json();
-    //const ssData = [];
-
-
-    //---Home page meetings
-    //const HPmeetings = await fetch(process.env.API_URL+'/api/home-page-meetings');
-    //const HPM = await HPmeetings.json();
-    const HPM = [];
+export const getStaticProps = async () => {
+    // Fetch data from APIs
+    const dSlider = await fetchData('/api/slider');
+    const dWS = await fetchData('/api/welcome-section');
+    const dWL = await fetchData('/api/welcome-list');
+    const upmeData = await fetchData('/api/upcoming-meeting');
+    const ssData = await fetchData('/api/site-setting');
+    const HPM = []; // Hardcoded empty array as per your original code
 
     return {
-        props:{
+        props: {
             dSlider,
             dWS,
             dWL,
@@ -104,6 +82,7 @@ function getSlugWithMeetingInfo(meeting){
 }
 
 export default function Home({dSlider, dWS, dWL, upmeData, ssData, HPM}) {
+    console.log(dSlider);
     const API_URL_Local = GlobalConifg.API_URL_Local;
   return (
     <>
@@ -129,7 +108,7 @@ export default function Home({dSlider, dWS, dWL, upmeData, ssData, HPM}) {
                 <div className="carousel-inner">
                 {dSlider.map((slider, i) => (
                     <div className={i == 0 ? "carousel-item active" : "carousel-item "} key={slider.id}>
-                        <img className="w-100" src={API_URL_Local+"/"+slider.image} alt="Image" style={{height: "480px"}} />
+                        <img className="w-100" src="https://monsoon-mission.tropmet.res.in/theme/img/bg-1.jpg" alt="Image" style={{height: "480px"}} />
                         <div className="carousel-caption d-flex flex-column align-items-center justify-content-center">
                             <div className="p-3" style={{maxWidth: "900px"}}>                            
                                 <h1 className="display-1 text-white mb-md-4">{slider.heading}</h1>
@@ -220,7 +199,8 @@ export default function Home({dSlider, dWS, dWL, upmeData, ssData, HPM}) {
             <div className="row g-0">
                 <div className="col-lg-6 py-6 px-5">
                     <h1 className="display-5 mb-4">{upmeData.heading}</h1>
-                    <p className="mb-4">{upmeData.description}</p>
+                    <p className="mb-4" dangerouslySetInnerHTML={{ __html: upmeData.description }}
+                    ></p>
                     {/* <form>
                         <div className="row gx-3">
                             <small>Get notification on email</small>
@@ -245,7 +225,7 @@ export default function Home({dSlider, dWS, dWL, upmeData, ssData, HPM}) {
                 </div>
                 <div className="col-lg-6" style={{minHeight: "400px"}}>
                     <div className="position-relative h-100">
-                        <img className="position-absolute w-100 h-100" alt='' src={API_URL_Local+"/"+upmeData.banner} style={{objectFit: "cover"}} />
+                        <img className="position-absolute w-100 h-100" alt='' src="https://monsoon-mission.tropmet.res.in/banners/35f5171c035f5955412640a1c90353f5.png" style={{objectFit: "cover"}} />
                     </div>
                 </div>
             </div>

@@ -12,8 +12,8 @@ export default function Document() {
       <script src="https://tropmet.res.in/monsoon/monsoon3/js/lib/owlcarousel/owl.carousel.min.js" defer  ></script>
       <script src="https://tropmet.res.in/monsoon/monsoon3/js/main.js" defer  ></script>
       <script src="/custom.js" defer></script>
-      <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@500;600;700&family=Open+Sans:wght@400;600&display=swap"  />
-      <link  rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+      {/* <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@500;600;700&family=Open+Sans:wght@400;600&display=swap"  /> */}
+      {/* <link  rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" /> */}
       <Head />
       <body>
         <Main />

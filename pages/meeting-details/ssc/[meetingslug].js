@@ -10,6 +10,7 @@ import LoginWindow from '@/components/loginWindow'
 import Documents from '@/components/documents';
 import { getSession } from "next-auth/react"
 import Image from 'next/image'
+import { fetchData } from '../../utils/api';
 
 
 
@@ -35,12 +36,12 @@ const API_URL_Local = GlobalConifg.API_URL_Local;
 export async function getServerSideProps(context) {
     //---site setting Data API
     const { meetingslug } = context.query;
-    console.log(meetingslug);
-    const meetingData = await fetch(process.env.API_URL+'/api/ssc-meeting-details?slug='+meetingslug);
-    const meetingInfo = await meetingData.json();
+    
+    const meetingInfo = await fetchData('/api/ssc-meeting-details?slug='+meetingslug);
+    
 
-    const site_setting = await fetch(process.env.API_URL+'/api/site-setting');
-    const ssData = await site_setting.json();
+    const ssData = await fetchData('/api/site-setting');
+    
 
     // ---------------------------------------------------------------------------------------------
     

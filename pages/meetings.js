@@ -5,6 +5,7 @@ import Footer from '@/components/footer'
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import Image from 'next/image'
+import { fetchData } from './utils/api';
 
 
 
@@ -16,29 +17,33 @@ import GlobalConifg from '../app.config'
 const API_URL_Local = GlobalConifg.API_URL_Local;
 
 export const getStaticProps = async () =>{
+
+    
+
+
     //---Slider Data API
-    const sliderData = await fetch(process.env.API_URL+'/api/slider');
-    const dSlider = await sliderData.json();
+    const dSlider = await fetchData('/api/slider');
+    
 
     //---Welcome Section Data API
-    const WSData = await fetch(process.env.API_URL+'/api/welcome-section');
-    const dWS = await WSData.json();
+    const dWS = await fetchData('/api/welcome-section');
+    
 
     //---Welcome List Data API
-    const WLData = await fetch(process.env.API_URL+'/api/welcome-list');
-    const dWL = await WLData.json();
+    const dWL = await fetchData('/api/welcome-list');
+    
 
     //---Welcome List Data API
-    const upmeRes = await fetch(process.env.API_URL+'/api/upcoming-meeting');
-    const upmeData = await upmeRes.json();
+    const upmeData = await fetchData('/api/upcoming-meeting');
+    
 
     //---site setting Data API
-    const site_setting = await fetch(process.env.API_URL+'/api/site-setting');
-    const ssData = await site_setting.json();
+    const ssData = await fetchData('/api/site-setting');
+   
 
     //---Home page meetings
-    const Allmeetings = await fetch(process.env.API_URL+'/api/get-all-meetings');
-    const AllM = await Allmeetings.json();
+    const AllM = await fetchData('/api/get-all-meetings');
+    
 
     return {
         props:{
@@ -238,7 +243,7 @@ export default function Meetings({dSlider, dWS, dWL, upmeData, ssData, AllM}) {
                 <div className="col-lg-4" key={i}>
                     <div className="blog-item">
                         <div className="position-relative overflow-hidden">
-                            <img className="img-fluid" src={API_URL_Local+'/'+meeting.poster} alt="poster" style={{width:580, height:370}} />
+                            <img className="img-fluid" src={API_URL_Local+'/meetings/0d2842a03c1a80200511c588977b919c.jpg'} alt="poster" style={{width:580, height:370}} />
                         </div>
                         <div className="bg-secondary d-flex">
                             <div className="flex-shrink-0 d-flex flex-column justify-content-center text-center bg-primary text-white px-4">

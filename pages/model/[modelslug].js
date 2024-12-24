@@ -3,6 +3,7 @@ import Head from 'next/head'
 import Header from '@/components/header'
 import Footer from '@/components/footer'
 import Link from "next/link";
+import { fetchData } from '../utils/api';
 
 import GlobalConifg from '../../app.config'
 
@@ -13,11 +14,11 @@ export async function getServerSideProps(context) {
     //---site setting Data API
     const { modelslug } = context.query;
     
-    const modelDataRes = await fetch(process.env.API_URL+'/api/model-data?slug='+modelslug);
-    const modelData = await modelDataRes?.json();
+    const modelData = await fetchData('/api/model-data?slug='+modelslug);
+    
 
-    const site_setting = await fetch(process.env.API_URL+'/api/site-setting');
-    const ssData = await site_setting.json();
+    const ssData = await fetchData('/api/site-setting');
+    
 
     // ---------------------------------------------------------------------------------------------
     

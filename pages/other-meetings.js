@@ -4,6 +4,7 @@ import Header from '@/components/header'
 import Footer from '@/components/footer'
 import Link from "next/link";
 import Image from 'next/image'
+import { fetchData } from './utils/api';
 
 
 
@@ -16,29 +17,23 @@ const API_URL_Local = GlobalConifg.API_URL_Local;
 
 export const getStaticProps = async () =>{
     //---Slider Data API
-    const sliderData = await fetch(process.env.API_URL+'/api/slider');
-    const dSlider = await sliderData.json();
-
+    const dSlider = await fetchData('/api/slider');
+    
     //---Welcome Section Data API
-    const WSData = await fetch(process.env.API_URL+'/api/welcome-section');
-    const dWS = await WSData.json();
-
+    const dWS = await fetchData('/api/welcome-section');
+    
     //---Welcome List Data API
-    const WLData = await fetch(process.env.API_URL+'/api/welcome-list');
-    const dWL = await WLData.json();
-
+    const dWL = await fetchData('/api/welcome-list');
+    
     //---Welcome List Data API
-    const upmeRes = await fetch(process.env.API_URL+'/api/upcoming-meeting');
-    const upmeData = await upmeRes.json();
-
+    const upmeData = await fetchData('/api/upcoming-meeting');
+    
     //---site setting Data API
-    const site_setting = await fetch(process.env.API_URL+'/api/site-setting');
-    const ssData = await site_setting.json();
-
+    const ssData = await fetchData('/api/site-setting');
+    
     //---Home page meetings
-    const Allmeetings = await fetch(process.env.API_URL+'/api/get-all-meetings-other');
-    const AllM = await Allmeetings.json();
-
+    const AllM = await fetchData('/api/get-all-meetings-other');
+    
     return {
         props:{
             dSlider,

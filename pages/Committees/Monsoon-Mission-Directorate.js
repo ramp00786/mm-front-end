@@ -4,6 +4,7 @@ import Header from '@/components/header'
 import Footer from '@/components/footer'
 import Link from "next/link";
 import Image from 'next/image'
+import { fetchData } from '../utils/api';
 
 
 
@@ -20,12 +21,12 @@ const API_URL_Local = GlobalConifg.API_URL_Local;
 
 export const getStaticProps = async () =>{
     //---Slider Data API
-    const MmCommitteeData = await fetch(process.env.API_URL+'/api/mm_committee');
-    const MmData = await MmCommitteeData.json();
+    const MmData = await fetchData('/api/mm_committee');
+    
     
     //---site setting Data API
-    const site_setting = await fetch(process.env.API_URL+'/api/site-setting');
-    const ssData = await site_setting.json();
+    const ssData = await fetchData('/api/site-setting');
+    
 
     return {
         props:{

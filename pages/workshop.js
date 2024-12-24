@@ -4,6 +4,8 @@ import Header from '@/components/header'
 import Footer from '@/components/footer'
 import Link from "next/link";
 import Workshopcnt from '@/components/workshopcnt';
+import { fetchData } from './utils/api';
+
 
 
 const inter = Inter({ subsets: ['latin'] });
@@ -18,12 +20,12 @@ function displayHtml(htmlString) {
 
 export const getStaticProps = async () =>{
     //---About us Data API
-    const dataRes = await fetch(process.env.API_URL+'/api/workshop-data');
-    const dd = await dataRes.json();
+    const dd = await fetchData('/api/workshop-data');
+    
 
     //---site setting Data API
-    const site_setting = await fetch(process.env.API_URL+'/api/site-setting');
-    const ssData = await site_setting.json();
+    const ssData = await fetchData('/api/site-setting');
+    
 
     return {
         props:{

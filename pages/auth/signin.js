@@ -7,6 +7,7 @@ import LoginWindow from '@/components/loginWindow'
 import { useState } from "react"
 import { useSession, signIn, signOut } from "next-auth/react"
 import Router from 'next/router';
+import { fetchData } from '../utils/api';
 
 
 
@@ -25,8 +26,8 @@ function displayHtml(htmlString) {
 export const getStaticProps = async () =>{
 
     //---site setting Data API
-    const site_setting = await fetch(process.env.API_URL+'/api/site-setting');
-    const ssData = await site_setting.json();
+    const ssData = await fetchData('/api/site-setting');
+    
 
     return {
         props:{

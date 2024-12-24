@@ -4,6 +4,7 @@ import Header from '@/components/header'
 import Footer from '@/components/footer'
 import Link from "next/link";
 import { useState} from "react"
+import { fetchData } from './utils/api';
 //import MaterialTable from 'material-table';
 
 
@@ -26,17 +27,18 @@ function displayHtml(htmlString) {
 }
 
 export const getStaticProps = async () =>{
-    //---dataTableRes Data API
-    const dataTableRes = await fetch(process.env.API_URL+'/api/scientific-data');
-    const serverData = await dataTableRes.json();
+
+    
 
     //---dataTableRes Data API
-    const dataDescRes = await fetch(process.env.API_URL+'/api/data-desc');
-    const dataDesc = await dataDescRes.json();
-
+    const serverData = await fetchData('/api/scientific-data');
+    
+    //---dataTableRes Data API
+    const dataDesc = await fetchData('/api/data-desc');
+    
     //---site setting Data API
-    const site_setting = await fetch(process.env.API_URL+'/api/site-setting');
-    const ssData = await site_setting.json();
+    const ssData = await fetchData('/api/site-setting');
+    
 
     return {
         props:{

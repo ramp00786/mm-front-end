@@ -11,6 +11,7 @@ import Documentsactivity from '@/components/documentsactivity';
 import { getSession } from "next-auth/react"
 
 import GlobalConifg from '../../app.config'
+import { fetchData } from '../utils/api';
 
 
 const API_URL_Local = GlobalConifg.API_URL_Local;
@@ -19,11 +20,11 @@ export async function getServerSideProps(context) {
     //---site setting Data API
     const { activityid } = context.query;
 
-    const dataRes = await fetch(process.env.API_URL+'/api/activity-details?id='+activityid);
-    const dataInfo = await dataRes.json();
+    const dataInfo = await fetchData('/api/activity-details?id='+activityid);
+    
 
-    const site_setting = await fetch(process.env.API_URL+'/api/site-setting');
-    const ssData = await site_setting.json();
+    const ssData = await fetchData('/api/site-setting');
+    
 
     // ---------------------------------------------------------------------------------------------
     
